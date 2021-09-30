@@ -1,11 +1,16 @@
 package com.example.gb_libs_lesson1.presentation
 
+import android.accessibilityservice.AccessibilityService
 import com.example.gb_libs_lesson1.model.GithubUser
 import com.example.gb_libs_lesson1.model.GithubUsersRepo
+import com.example.gb_libs_lesson1.screens.AndroidScreens
 import com.example.gb_libs_lesson1.view.UserItemView
+import com.example.gb_libs_lesson1.view.ui.UserLoginFragment
 import com.example.gb_libs_lesson1.view.ui.UsersView
 import moxy.MvpPresenter
 import ru.terrakok.cicerone.Router
+import ru.terrakok.cicerone.Screen
+
 
 class UsersPresenter(
     val usersRepo: GithubUsersRepo,
@@ -35,8 +40,14 @@ class UsersPresenter(
         loadData()
 
         usersListPresenter.itemClickListener = { itemView ->
-            // todo
+            openLoginUser(itemView.pos)
         }
+    }
+
+    fun openLoginUser(pos: Int) {
+        val users = usersRepo.getUsers()
+        val userLogin = users[pos].login
+        router.navigateTo(AndroidScreens.UsersLoginScreen(userLogin))
     }
 
     fun loadData() {
