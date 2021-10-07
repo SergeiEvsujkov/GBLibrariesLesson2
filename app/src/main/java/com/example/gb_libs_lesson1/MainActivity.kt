@@ -2,6 +2,7 @@ package com.example.gb_libs_lesson1
 
 import android.os.Bundle
 import com.example.gb_libs_lesson1.databinding.ActivityMainBinding
+import com.example.gb_libs_lesson1.presentation.UsersPresenter
 import com.example.gb_libs_lesson1.view.BackButtonListener
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter

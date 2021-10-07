@@ -24,7 +24,9 @@ class UsersFragment : MvpAppCompatFragment(), UsersView, BackButtonListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         return FragmentUsersBinding.inflate(inflater, container, false).also {
             vb = it
+            presenter.exec()
         }.root
+
     }
 
     override fun init() {
